@@ -26,12 +26,10 @@ public class AMColorPickerRGBSliderView: UIView, AMColorPicker {
             redLabel.text = NSString(format: "%.0f", red) as String
             greenLabel.text = NSString(format: "%.0f", green) as String
             blueLabel.text = NSString(format: "%.0f", blue) as String
-            opacityLabel.text = NSString(format: "%.0f", alpha) as String
             
             redSlider.value = Float(red)
             greenSlider.value = Float(green)
             blueSlider.value = Float(blue)
-            opacitySlider.value = Float(alpha)
             
             hexTextField.text = getHexString(color: selectedColor)
             
@@ -42,12 +40,10 @@ public class AMColorPickerRGBSliderView: UIView, AMColorPicker {
     @IBOutlet weak private var redSlider: AMColorPickerSlider!
     @IBOutlet weak private var greenSlider: AMColorPickerSlider!
     @IBOutlet weak private var blueSlider: AMColorPickerSlider!
-    @IBOutlet weak private var opacitySlider: UISlider!
     
     @IBOutlet weak private var redLabel: UILabel!
     @IBOutlet weak private var greenLabel: UILabel!
     @IBOutlet weak private var blueLabel: UILabel!
-    @IBOutlet weak private var opacityLabel: UILabel!
     
     @IBOutlet weak private var colorView: UIView!
     @IBOutlet weak private var hexTextField: UITextField!
@@ -98,7 +94,6 @@ public class AMColorPickerRGBSliderView: UIView, AMColorPicker {
             return
         }
         
-        let alpha = NSString(string: opacityLabel.text!).floatValue/100.0
         let color = getHexColor(hexStr: newText, alpha: CGFloat(alpha))
        
         var red:CGFloat = 0
@@ -142,7 +137,6 @@ public class AMColorPickerRGBSliderView: UIView, AMColorPicker {
     }
     
     @IBAction private func changedOpacitySlider(_ slider: UISlider) {
-        opacityLabel.text = NSString(format: "%.0f", slider.value) as String
         let color = getColor()
         hexTextField.text = getHexString(color: color)
         didSelect(color: color)
@@ -153,7 +147,6 @@ public class AMColorPickerRGBSliderView: UIView, AMColorPicker {
         let red = NSString(string: redLabel.text!).floatValue/255.0
         let green = NSString(string: greenLabel.text!).floatValue/255.0
         let blue = NSString(string: blueLabel.text!).floatValue/255.0
-        let alpha = NSString(string: opacityLabel.text!).floatValue/100.0
         return UIColor(red: CGFloat(red),
                        green: CGFloat(green),
                        blue: CGFloat(blue),

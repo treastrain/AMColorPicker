@@ -25,18 +25,14 @@ public class AMColorPickerWheelView: UIView, AMColorPicker {
             alpha = alpha * 100
             brightness = brightness * 100
             
-            opacityLabel.text = NSString(format: "%.0f", alpha) as String
             brightnessLabel.text = NSString(format: "%.0f", brightness) as String
-            opacitySlider.value = Float(alpha)
             brightnessSlider.value = Float(brightness)
             
             setSliderColor(color: selectedColor)
         }
     }
     
-    @IBOutlet weak private var opacityLabel: UILabel!
     @IBOutlet weak private var brightnessLabel: UILabel!
-    @IBOutlet weak private var opacitySlider: UISlider!
     @IBOutlet weak private var colorView: UIView!
     @IBOutlet weak private var brightnessSlider: AMColorPickerSlider!
     
@@ -100,11 +96,6 @@ public class AMColorPickerWheelView: UIView, AMColorPicker {
         didSelect(color: calculateColor(point: cursorImageView.center))
     }
     
-    @IBAction private func changedOpacitySlider(_ slider: UISlider) {
-        opacityLabel.text = NSString(format: "%.0f", slider.value) as String
-        didSelect(color: calculateColor(point: cursorImageView.center))
-    }
-    
     //MARK:SetColor
     private func setSliderColor(color: UIColor) {
         var hue:CGFloat = 0
@@ -141,7 +132,7 @@ public class AMColorPickerWheelView: UIView, AMColorPicker {
         let distance = CGFloat(sqrtf(Float(pow(Double(x), 2) + pow(Double(y), 2))))
         let saturation = (distance > radius) ? 1.0 : distance/radius
         let brightness = CGFloat(brightnessSlider.value)/100.0
-        let alpha = CGFloat(opacitySlider.value)/100.0;
+        let alpha: CGFloat = 1.0
         let hue = CGFloat(radian/Float(Double.pi*2))
         return UIColor(hue: hue,
                        saturation: saturation,

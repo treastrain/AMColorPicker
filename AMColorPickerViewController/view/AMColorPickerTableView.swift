@@ -17,13 +17,9 @@ public class AMColorPickerTableView: UIView, AMColorPicker {
             var alpha:CGFloat = 0
             selectedColor.getRed(nil, green: nil, blue: nil, alpha: &alpha)
             alpha = alpha * 100
-            opacityLabel.text = NSString(format: "%.0f", alpha) as String
-            opacitySlider.value = Float(alpha)
         }
     }
     
-    @IBOutlet weak private var opacityLabel: UILabel!
-    @IBOutlet weak private var opacitySlider: UISlider!
     @IBOutlet weak private var colorView: UIView!
     @IBOutlet weak private var tableView: UITableView!
     
@@ -65,7 +61,6 @@ public class AMColorPickerTableView: UIView, AMColorPicker {
     
     //MARK:IBAction
     @IBAction private func changedOpacitySlider(_ slider: UISlider) {
-        opacityLabel.text = NSString(format: "%.0f", slider.value) as String
         didSelect(color: colorView.backgroundColor!)
     }
     
@@ -74,7 +69,7 @@ public class AMColorPickerTableView: UIView, AMColorPicker {
         var red:CGFloat = 0
         var green:CGFloat = 0
         var blue:CGFloat = 0
-        let alpha = NSString(string: opacityLabel.text!).floatValue/100.0
+        let alpha = 1
         color.getRed(&red, green: &green, blue: &blue, alpha: nil)
         let selectColor = UIColor(red: red, green: green, blue: blue, alpha: CGFloat(alpha))
         colorView.backgroundColor = selectColor
