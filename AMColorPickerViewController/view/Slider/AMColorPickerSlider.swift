@@ -31,8 +31,7 @@ class AMColorPickerSlider: UISlider {
         self.maximumTrackTintColor = UIColor.clear
         self.minimumTrackTintColor = UIColor.clear
         
-        let bundle = Bundle(for: AMColorPickerSlider.self)
-        if let imagePath = bundle.path(forResource: "AMCP_slider_thumb@2x", ofType: "png") {
+        if let imagePath = Bundle.module.path(forResource: "AMCP_slider_thumb@2x", ofType: "png") {
             setThumbImage(UIImage(contentsOfFile: imagePath), for: .normal)
         }
     }

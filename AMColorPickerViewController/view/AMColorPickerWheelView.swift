@@ -51,8 +51,7 @@ public class AMColorPickerWheelView: UIView, AMColorPicker {
     }
     
     private func loadNib() {
-        let bundle = Bundle(for: AMColorPickerWheelView.self)
-        let view = bundle.loadNibNamed("AMColorPickerWheelView", owner: self, options: nil)?.first as! UIView
+        let view = Bundle.module.loadNibNamed("AMColorPickerWheelView", owner: self, options: nil)?.first as! UIView
         view.frame = bounds
         view.translatesAutoresizingMaskIntoConstraints = true
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]

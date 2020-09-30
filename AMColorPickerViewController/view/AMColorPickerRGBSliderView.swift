@@ -61,8 +61,7 @@ public class AMColorPickerRGBSliderView: UIView, AMColorPicker {
     }
     
     private func loadNib() {
-        let bundle = Bundle(for: AMColorPickerRGBSliderView.self)
-        let view = bundle.loadNibNamed("AMColorPickerRGBSliderView", owner: self, options: nil)?.first as! UIView
+        let view = Bundle.module.loadNibNamed("AMColorPickerRGBSliderView", owner: self, options: nil)?.first as! UIView
         view.frame = bounds
         view.translatesAutoresizingMaskIntoConstraints = true
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
